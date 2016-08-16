@@ -27,7 +27,7 @@
   (put- [this k v])
   (keys- [this])
   (set-num-keys!- [this num-keys])
-  (get-cur-size- [this]))
+  (get-cur-num-keys- [this]))
 
 (defrecord Stockroom [num-keys-atom state-atom]
   ICache
@@ -54,7 +54,7 @@
     (reset! num-keys-atom num-keys)
     nil)
 
-  (get-cur-size- [this]
+  (get-cur-num-keys- [this]
     (count (:cache @state-atom))))
 
 ;;;;;;;;;;;;;;;;;;;; API ;;;;;;;;;;;;;;;;;;;;
@@ -94,9 +94,9 @@
    num-keys :- s/Int]
   (set-num-keys!- stockroom num-keys))
 
-(s/defn get-cur-size :- s/Int
+(s/defn get-cur-num-keys :- s/Int
   [stockroom :- Stockroom]
-  (get-cur-size- stockroom))
+  (get-cur-num-keys- stockroom))
 
 ;;;;;;;;;;;;;;;;;;;; helper fns ;;;;;;;;;;;;;;;;;;;;
 

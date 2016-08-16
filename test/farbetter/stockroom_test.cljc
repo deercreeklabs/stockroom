@@ -24,18 +24,20 @@
 (deftest test-stockroom
   (let [size 3
         stockroom (sr/make-stockroom size)]
+    (is (zero? (sr/get-cur-size stockroom)))
     (is (nil? (sr/get stockroom 1)))
     (is (nil? (sr/get stockroom 2)))
     (is (nil? (sr/get stockroom 3)))
     (sr/put stockroom 1 1)
     (is (= 1 (sr/get stockroom 1)))
+    (is (= 1 (sr/get-cur-size stockroom)))
     (sr/put stockroom 2 2)
     (is (= 2 (sr/get stockroom 2)))
     (sr/put stockroom 3 3)
     (is (= 3 (sr/get stockroom 3)))
     (sr/put stockroom 4 4)
     (is (= 4 (sr/get stockroom 4)))
-    (is (= size (count (sr/keys stockroom))))
+    (is (= 3 (sr/get-cur-size stockroom)))
     (is (= 1 (sr/get stockroom 1)))
     (sr/put stockroom 5 5)
     (is (= #{1 4 5} (set (sr/keys stockroom))))))

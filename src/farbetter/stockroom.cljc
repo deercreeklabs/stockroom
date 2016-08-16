@@ -51,7 +51,8 @@
                        (sym-map num-keys)))
     (when (< num-keys @num-keys-atom)
       (swap! state-atom shrink-cache num-keys))
-    (reset! num-keys-atom num-keys))
+    (reset! num-keys-atom num-keys)
+    nil)
 
   (get-cur-size- [this]
     (count (:cache @state-atom))))
@@ -81,7 +82,8 @@
   [stockroom :- Stockroom
    k :- Key
    v :- Value]
-  (put- stockroom k v))
+  (put- stockroom k v)
+  nil)
 
 (s/defn keys :- [Key]
   [stockroom :- Stockroom]

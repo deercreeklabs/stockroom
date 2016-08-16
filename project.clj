@@ -14,9 +14,9 @@
   :dependencies
   [[cljsjs/nodejs-externs "1.0.4-1"]
    [com.taoensso/timbre "4.7.3"]
-   [farbetter/utils "0.1.51"]
+   [farbetter/utils "0.1.52"]
    [org.clojure/clojure "1.8.0"]
-   [org.clojure/clojurescript "1.9.93"]
+   [org.clojure/clojurescript "1.9.216"]
    [prismatic/schema "1.1.3"]]
 
   :cljsbuild

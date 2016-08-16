@@ -1,15 +1,17 @@
-(defproject farbetter/stockroom "0.1.3"
+(defproject farbetter/stockroom "0.1.4-SNAPSHOT"
   :description "Clojure/Clojurescript cache, using the Clock algorithm."
   :url "http://www.farbetter.com"
   :license {:name "Apache License, Version 2.0"
             :url "http://www.apache.org/licenses/LICENSE-2.0"}
   :lein-release {:scm :git
                  :deploy-via :clojars}
-  :deploy-repositories [["clojars" {:creds :gpg}]]
-
-  :profiles {:dev
-             {:plugins
-              [[lein-cljsbuild "1.1.3"]]}}
+  :profiles
+  {:dev
+   {:plugins
+    [[lein-cljsbuild "1.1.3"]
+     ;; Because of confusion with a defunct project also called
+     ;; lein-release, we exclude lein-release from lein-ancient.
+     [lein-release "1.0.9" :upgrade false :exclusions [org.clojure/clojure]]]}}
 
   :dependencies
   [[cljsjs/nodejs-externs "1.0.4-1"]

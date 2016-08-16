@@ -10,7 +10,7 @@
      (:require-macros
       [farbetter.utils :refer [inspect sym-map]])))
 
-(declare get-cache-item put* update-referenced?)
+(declare get-cache-item put* shrink-cache update-referenced?)
 
 (def Key s/Any)
 (def Value s/Any)
@@ -25,9 +25,10 @@
 (defprotocol ICache
   (get- [this k])
   (put- [this k v])
-  (keys- [this]))
+  (keys- [this])
+  (set-num-keys!- [this num-keys]))
 
-(defrecord Stockroom [num-keys state-atom]
+(defrecord Stockroom [num-keys-atom state-atom]
   ICache
   (get- [this k]
     (let [state (swap! state-atom (partial update-referenced? k))
@@ -36,11 +37,20 @@
         (second (cache index)))))
 
   (put- [this k v]
-    (swap! state-atom (partial put* num-keys k v))
+    (swap! state-atom (partial put* @num-keys-atom k v))
     nil)
 
   (keys- [this]
-    (clojure.core/keys (:key->index @state-atom))))
+    (clojure.core/keys (:key->index @state-atom)))
+
+  (set-num-keys!- [this num-keys]
+    (when-not (pos? num-keys)
+      (throw-far-error "num-keys must be positive."
+                       :illegal-argument :num-keys-not-positive
+                       (sym-map num-keys)))
+    (when (< num-keys @num-keys-atom)
+      (swap! state-atom shrink-cache num-keys))
+    (reset! num-keys-atom num-keys)))
 
 ;;;;;;;;;;;;;;;;;;;; API ;;;;;;;;;;;;;;;;;;;;
 
@@ -49,13 +59,14 @@
   (let [state {:key->index {}
                :cache []
                :clock-hand 0}
-        state-atom (atom state)]
+        state-atom (atom state)
+        num-keys-atom (atom num-keys)]
     ;; These are left here for debugging
     ;; (set-validator! state-atom #(s/validate State %))
     ;; (add-watch state-atom :print (fn [k r old new]
     ;;                                (debugf "###### State Change #######\n%s"
     ;;                                        (u/inspect-str old new))))
-    (map->Stockroom (sym-map num-keys state-atom))))
+    (map->Stockroom (sym-map num-keys-atom state-atom))))
 
 (s/defn get :- (s/maybe Value)
   [stockroom :- Stockroom
@@ -71,6 +82,11 @@
 (s/defn keys :- [Key]
   [stockroom :- Stockroom]
   (keys- stockroom))
+
+(s/defn set-num-keys! :- nil
+  [stockroom :- Stockroom
+   num-keys :- s/Int]
+  (set-num-keys!- stockroom num-keys))
 
 ;;;;;;;;;;;;;;;;;;;; Helper fns ;;;;;;;;;;;;;;;;;;;;
 
@@ -106,3 +122,15 @@
     (if-let [index (key->index k)]
       (assoc-in state [:cache index 2] true)
       state)))
+
+(defn shrink-cache [old-state num-keys]
+  (let [{:keys [cache key->index clock-hand]} old-state
+        extra-items (subvec cache num-keys)
+        cache (subvec cache 0 num-keys)
+        key->index (reduce (fn [acc [k v ref?]]
+                             (dissoc acc k))
+                           key->index extra-items)
+        clock-hand (if (>= clock-hand num-keys)
+                     0
+                     clock-hand)]
+    (sym-map cache key->index clock-hand)))

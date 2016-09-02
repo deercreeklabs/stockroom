@@ -78,7 +78,7 @@
    k :- Key]
   (get- stockroom k))
 
-(s/defn put :- nil
+(s/defn put :- (s/eq nil)
   [stockroom :- Stockroom
    k :- Key
    v :- Value]
@@ -89,7 +89,7 @@
   [stockroom :- Stockroom]
   (keys- stockroom))
 
-(s/defn set-num-keys! :- nil
+(s/defn set-num-keys! :- (s/eq nil)
   [stockroom :- Stockroom
    num-keys :- s/Int]
   (set-num-keys!- stockroom num-keys))

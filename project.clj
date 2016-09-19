@@ -1,4 +1,4 @@
-(defproject farbetter/stockroom "0.1.6"
+(defproject farbetter/stockroom "0.1.7-SNAPSHOT"
   :description "Clojure/Clojurescript cache, using the Clock algorithm."
   :url "http://www.farbetter.com"
   :license {:name "Apache License, Version 2.0"

@@ -1,4 +1,4 @@
-(defproject farbetter/stockroom "0.1.6-SNAPSHOT"
+(defproject farbetter/stockroom "0.1.6"
   :description "Clojure/Clojurescript cache, using the Clock algorithm."
   :url "http://www.farbetter.com"
   :license {:name "Apache License, Version 2.0"
@@ -8,17 +8,17 @@
   :profiles
   {:dev
    {:plugins
-    [[lein-cljsbuild "1.1.3"]
+    [[lein-cljsbuild "1.1.4"]
      ;; Because of confusion with a defunct project also called
      ;; lein-release, we exclude lein-release from lein-ancient.
      [lein-release "1.0.9" :upgrade false :exclusions [org.clojure/clojure]]]}}
 
   :dependencies
   [[cljsjs/nodejs-externs "1.0.4-1"]
-   [com.taoensso/timbre "4.7.3"]
-   [farbetter/utils "0.1.52"]
+   [com.taoensso/timbre "4.7.4"]
+   [farbetter/utils "0.1.56"]
    [org.clojure/clojure "1.8.0"]
-   [org.clojure/clojurescript "1.9.216"]
+   [org.clojure/clojurescript "1.9.229"]
    [prismatic/schema "1.1.3"]]
 
   :cljsbuild

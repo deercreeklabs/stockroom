@@ -66,11 +66,6 @@
                :clock-hand 0}
         state-atom (atom state)
         num-keys-atom (atom num-keys)]
-    ;; These are left here for debugging
-    ;; (set-validator! state-atom #(s/validate State %))
-    ;; (add-watch state-atom :print (fn [k r old new]
-    ;;                                (debugf "###### State Change #######\n%s"
-    ;;                                        (u/inspect-str old new))))
     (map->Stockroom (sym-map num-keys-atom state-atom))))
 
 (s/defn get :- (s/maybe Value)

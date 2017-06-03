@@ -1,4 +1,4 @@
-(defproject deercreeklabs/stockroom "0.1.10-SNAPSHOT"
+(defproject deercreeklabs/stockroom "0.1.10"
   :description "Clojure/Clojurescript cache, using the Clock algorithm."
   :url "http://www.deercreeklabs.com"
   :license {:name "Apache License, Version 2.0"

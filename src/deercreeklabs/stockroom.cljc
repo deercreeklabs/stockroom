@@ -1,14 +1,9 @@
-(ns farbetter.stockroom
+(ns deercreeklabs.stockroom
   (:refer-clojure :exclude [get keys])
   (:require
-   [farbetter.utils :as u :refer
-    [throw-far-error #?@(:clj [inspect sym-map])]]
    [schema.core :as s :include-macros true]
    [taoensso.timbre :as timbre
-    #?(:clj :refer :cljs :refer-macros) [debugf errorf infof]])
-  #?(:cljs
-     (:require-macros
-      [farbetter.utils :refer [inspect sym-map]])))
+    #?(:clj :refer :cljs :refer-macros) [debugf errorf infof]]))
 
 (declare get-cache-item put* shrink-cache update-referenced?)
 
@@ -21,6 +16,16 @@
 (def State {:key->index {Key Index}
             :cache [CacheItem]
             :clock-hand Index})
+
+(defmacro sym-map
+  "Builds a map from local symbols.
+  Symbol names are turned into keywords and become the map's keys
+  Symbol values become the map's values
+  (let [a 1
+        b 2]
+    (sym-map a b))  =>  {:a 1 :b 2}"
+  [& syms]
+  (zipmap (map keyword syms) syms))
 
 (defprotocol ICache
   (get- [this k])
@@ -46,9 +51,10 @@
 
   (set-num-keys!- [this num-keys]
     (when-not (pos? num-keys)
-      (throw-far-error "num-keys must be positive."
-                       :illegal-argument :num-keys-not-positive
-                       (sym-map num-keys)))
+      (throw (ex-info "num-keys must be positive."
+                      {:type :illegal-argument
+                       :subtype :num-keys-not-positive
+                       :num-keys num-keys})))
     (when (< num-keys @num-keys-atom)
       (swap! state-atom shrink-cache num-keys))
     (reset! num-keys-atom num-keys)

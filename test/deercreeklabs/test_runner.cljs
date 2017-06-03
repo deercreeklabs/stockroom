@@ -1,12 +1,12 @@
-(ns farbetter.test-runner
+(ns deercreeklabs.test-runner
   (:require
    [cljs.nodejs :as nodejs]
    [cljs.test :as test :refer-macros [run-tests]]
-   [farbetter.stockroom-test]))
+   [deercreeklabs.stockroom-test]))
 
 (nodejs/enable-util-print!)
 
 (defn -main [& args]
-  (run-tests 'farbetter.stockroom-test))
+  (run-tests 'deercreeklabs.stockroom-test))
 
 (set! *main-cli-fn* -main)

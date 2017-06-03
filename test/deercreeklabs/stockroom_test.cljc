@@ -1,19 +1,16 @@
-(ns farbetter.stockroom-test
+(ns deercreeklabs.stockroom-test
   (:refer-clojure :exclude [get])
   (:require
    #?(:cljs [cljs.test :as t])
    #?(:clj [clojure.test :refer [deftest is use-fixtures]])
-   [farbetter.stockroom :as sr]
-   [farbetter.utils :as u :refer
-    [test-async #?@(:clj [inspect throws])]]
+   [deercreeklabs.stockroom :as sr]
    [schema.core :as s :include-macros true]
    [schema.test :as st]
    [taoensso.timbre :as timbre
     #?(:clj :refer :cljs :refer-macros) [debugf errorf infof]])
   #?(:cljs
      (:require-macros
-      [cljs.test :refer [deftest is use-fixtures]]
-      [farbetter.utils :refer [inspect throws]])))
+      [cljs.test :refer [deftest is use-fixtures]])))
 
 (use-fixtures :once schema.test/validate-schemas)
 

@@ -17,16 +17,6 @@
             :cache [CacheItem]
             :clock-hand Index})
 
-(defmacro sym-map
-  "Builds a map from local symbols.
-  Symbol names are turned into keywords and become the map's keys
-  Symbol values become the map's values
-  (let [a 1
-        b 2]
-    (sym-map a b))  =>  {:a 1 :b 2}"
-  [& syms]
-  (zipmap (map keyword syms) syms))
-
 (defprotocol ICache
   (get- [this k])
   (put- [this k v])
@@ -72,7 +62,7 @@
                :clock-hand 0}
         state-atom (atom state)
         num-keys-atom (atom num-keys)]
-    (map->Stockroom (sym-map num-keys-atom state-atom))))
+    (->Stockroom num-keys-atom state-atom)))
 
 (s/defn get :- (s/maybe Value)
   [stockroom :- Stockroom
@@ -144,4 +134,6 @@
         clock-hand (if (>= clock-hand num-keys)
                      0
                      clock-hand)]
-    (sym-map cache key->index clock-hand)))
+    {:cache cache
+     :key->index key->index
+     :clock-hand clock-hand}))

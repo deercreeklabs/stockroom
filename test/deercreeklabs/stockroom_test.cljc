@@ -1,18 +1,12 @@
 (ns deercreeklabs.stockroom-test
-  (:refer-clojure :exclude [get])
   (:require
-   #?(:cljs [cljs.test :as t])
-   #?(:clj [clojure.test :refer [deftest is use-fixtures]])
+   [clojure.test :refer [deftest is]]
    [deercreeklabs.stockroom :as sr]
-   [schema.core :as s :include-macros true]
-   [schema.test :as st]
-   [taoensso.timbre :as timbre
-    #?(:clj :refer :cljs :refer-macros) [debugf errorf infof]])
-  #?(:cljs
-     (:require-macros
-      [cljs.test :refer [deftest is use-fixtures]])))
+   [schema.core :as s]
+   [taoensso.timbre :as timbre :refer [debugf errorf infof]]))
 
-(use-fixtures :once schema.test/validate-schemas)
+;; Use this instead of fixtures, which are hard to make work w/ async testing.
+(s/set-fn-validation! false)
 
 (timbre/set-level! :debug)
 

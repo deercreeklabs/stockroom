@@ -2,8 +2,7 @@
   (:refer-clojure :exclude [get keys])
   (:require
    [schema.core :as s :include-macros true]
-   [taoensso.timbre :as timbre
-    #?(:clj :refer :cljs :refer-macros) [debugf errorf infof]]))
+   [taoensso.timbre :as timbre :refer [debugf errorf infof]]))
 
 (declare get-cache-item put* shrink-cache update-referenced?)
 

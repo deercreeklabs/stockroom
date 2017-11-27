@@ -10,6 +10,10 @@ pom.xml.asc
 /.nrepl-port
 /.cljs_*
 
+# JS stuff
+/node_modules
+package.json
+
 # Emacs stuff
 *~
 \#*\#

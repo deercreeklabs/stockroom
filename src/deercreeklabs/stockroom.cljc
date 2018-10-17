@@ -54,7 +54,7 @@
 
 ;;;;;;;;;;;;;;;;;;;; API ;;;;;;;;;;;;;;;;;;;;
 
-(s/defn make-stockroom :- Stockroom
+(s/defn stockroom :- Stockroom
   [num-keys :- s/Int]
   (let [state {:key->index {}
                :cache []

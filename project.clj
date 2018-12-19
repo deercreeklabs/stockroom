@@ -72,7 +72,7 @@
 
   :dependencies
   [[com.taoensso/timbre "4.10.0"]
-   [org.clojure/clojure "1.9.0"]
+   [org.clojure/clojure "1.10.0"]
    [org.clojure/clojurescript "1.10.439"]
    [prismatic/schema "1.1.9"]]
 

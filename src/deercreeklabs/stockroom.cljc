@@ -1,8 +1,7 @@
 (ns deercreeklabs.stockroom
   (:refer-clojure :exclude [get keys])
   (:require
-   [schema.core :as s :include-macros true]
-   [taoensso.timbre :as timbre :refer [debugf errorf infof]]))
+   [schema.core :as s :include-macros true]))
 
 (declare get-cache-item put* shrink-cache update-referenced?)
 

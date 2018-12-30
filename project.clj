@@ -71,8 +71,7 @@
                           [source-map-support "0.4.17"]]}
 
   :dependencies
-  [[com.taoensso/timbre "4.10.0"]
-   [org.clojure/clojure "1.10.0"]
+  [[org.clojure/clojure "1.10.0"]
    [org.clojure/clojurescript "1.10.439"
     :exclusions [com.google.code.findbugs/jsr305
                  com.google.errorprone/error_prone_annotations]]

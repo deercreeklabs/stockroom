@@ -2,13 +2,10 @@
   (:require
    [clojure.test :refer [deftest is]]
    [deercreeklabs.stockroom :as sr]
-   [schema.core :as s]
-   [taoensso.timbre :as timbre :refer [debugf errorf infof]]))
+   [schema.core :as s]))
 
 ;; Use this instead of fixtures, which are hard to make work w/ async testing.
 (s/set-fn-validation! false)
-
-(timbre/set-level! :debug)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Unit tests
 

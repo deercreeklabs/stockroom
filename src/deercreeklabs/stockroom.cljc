@@ -8,6 +8,7 @@
 (def Key s/Any)
 (def Value s/Any)
 (def Index s/Int)
+(def Function s/Any)
 (def CacheItem [(s/one Key :key)
                 (s/one Value :value)
                 (s/one s/Bool :referenced?)])
@@ -86,6 +87,18 @@
 (s/defn get-cur-num-keys :- s/Int
   [stockroom :- Stockroom]
   (get-cur-num-keys- stockroom))
+
+(s/defn memoize-sr :- Function
+  ([f :- Function]
+   (memoize-sr f 100))
+  ([f :- Function
+    num-keys :- s/Int]
+   (let [sr (stockroom num-keys)]
+     (fn [& args]
+       (or (get sr args)
+           (let [ret (apply f args)]
+             (put sr args ret)
+             ret))))))
 
 ;;;;;;;;;;;;;;;;;;;; helper fns ;;;;;;;;;;;;;;;;;;;;
 

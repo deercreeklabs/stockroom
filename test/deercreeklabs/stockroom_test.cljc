@@ -47,3 +47,10 @@
     (is (= 4 (sr/get stockroom 4)))
     (is (= 2 (count (sr/keys stockroom))))
     (is (= #{2 4} (set (sr/keys stockroom))))))
+
+(deftest test-memoize-sr
+  (let [f inc
+        f* (sr/memoize-sr f)]
+    (doseq [x (range 10)]
+      (is (= [x (f x)]
+             [x (f* x)])))))

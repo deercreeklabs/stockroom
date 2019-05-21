@@ -37,7 +37,7 @@
              :compiler compiler}
       node-test? (assoc :notify-command ["node" output-to]))))
 
-(defproject deercreeklabs/stockroom "0.1.19-SNAPSHOT"
+(defproject deercreeklabs/stockroom "0.2.0-SNAPSHOT"
   :description "Clojure/Clojurescript cache, using the Clock algorithm."
   :url "http://www.deercreeklabs.com"
   :license {:name "Apache License, Version 2.0"

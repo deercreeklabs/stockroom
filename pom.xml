@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>deercreeklabs</groupId>
+  <artifactId>stockroom</artifactId>
+  <packaging>jar</packaging>
+  <version>0.2.2</version>
+  <name>stockroom</name>
+  <description>Clojure/Clojurescript cache, using the Clock algorithm.</description>
+  <url>http://www.deercreeklabs.com</url>
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+    </license>
+  </licenses>
+  <scm>
+    <url>https://github.com/deercreeklabs/stockroom</url>
+    <connection>scm:git:git://github.com/deercreeklabs/stockroom.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/deercreeklabs/stockroom.git</developerConnection>
+    <tag>bce8bc613d062d21ebb320e3138c7173914560fb</tag>
+  </scm>
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <testSourceDirectory>test</testSourceDirectory>
+    <resources>
+      <resource>
+        <directory>resources</directory>
+      </resource>
+    </resources>
+    <testResources>
+      <testResource>
+        <directory>resources</directory>
+      </testResource>
+    </testResources>
+    <directory>target</directory>
+    <outputDirectory>target/classes</outputDirectory>
+    <plugins/>
+  </build>
+  <repositories>
+    <repository>
+      <id>clojars</id>
+      <url>https://repo.clojars.org/</url>
+    </repository>
+  </repositories>
+  <dependencyManagement>
+    <dependencies/>
+  </dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>org.clojure</groupId>
+      <artifactId>clojure</artifactId>
+      <version>1.10.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.clojure</groupId>
+      <artifactId>clojurescript</artifactId>
+      <version>1.10.520</version>
+    </dependency>
+    <dependency>
+      <groupId>prismatic</groupId>
+      <artifactId>schema</artifactId>
+      <version>1.1.12</version>
+    </dependency>
+  </dependencies>
+</project>

@@ -29,7 +29,7 @@ The created stockroom cache.
 
 #### Example
 ```clojure
-(stockroom 100)
+(def my-cache (stockroom 100))
 ```
 
 -------------------------------------------------------------------------------
@@ -48,7 +48,7 @@ The value of the given key, or nil if the key is not present
 
 #### Example
 ```clojure
-(get stockroom "a")
+(get my-cache "a")
 ```
 
 -------------------------------------------------------------------------------
@@ -66,7 +66,7 @@ All keys in the cache as a sequence.
 
 #### Example
 ```clojure
-(keys stockroom)
+(keys my-cache)
 ```
 
 -------------------------------------------------------------------------------
@@ -74,7 +74,8 @@ All keys in the cache as a sequence.
 ```clojure
 (put! stockroom k v)
 ```
-Puts the given value for the given key into the cache.
+Puts the given value for the given key into the cache. If the cache
+is full, evicts a key to make room.
 
 #### Parameters
 * `stockroom`: The stockroom cache
@@ -86,7 +87,7 @@ Puts the given value for the given key into the cache.
 
 #### Example
 ```clojure
-(put! stockroom :a-key "a-value")
+(put! my-cache :a-key "a-value")
 ```
 
 -------------------------------------------------------------------------------
@@ -105,7 +106,7 @@ Evicts the given key from the cache.
 
 #### Example
 ```clojure
-(evict! stockroom "a key you don't want")
+(evict! my-cache "a key you don't want")
 ```
 
 -------------------------------------------------------------------------------
@@ -123,7 +124,7 @@ Flushes / empties the cache.
 
 #### Example
 ```clojure
-(flush! stockroom)
+(flush! my-cache)
 ```
 
 -------------------------------------------------------------------------------
@@ -138,7 +139,8 @@ If `num-keys` is not provided, a cache of size 100 is used.
 
 #### Parameters
 * `stockroom`: The stockroom cache
-* `num-keys`: The number of keys this cache will contain.
+* `num-keys`: The number of keys this cache will contain. Optional; defaults
+to 100.
 
 #### Return Value
 The memoized function.

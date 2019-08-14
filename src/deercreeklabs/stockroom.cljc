@@ -1,5 +1,5 @@
 (ns deercreeklabs.stockroom
-  (:refer-clojure :exclude [keys])
+  (:refer-clojure :exclude [get keys])
   (:require
    [deercreeklabs.stockroom.utils :as u]
    [schema.core :as s]))

@@ -1,7 +1,8 @@
 # stockroom
 
-A cache for Clojure / Clojurescript. Keys and values are arbitrary
-Clojure data. Uses the Clock caching algorithm:
+A in-memory, fixed-size cache for Clojure / Clojurescript.
+Keys and values are arbitrary Clojure data.
+Uses the Clock caching algorithm:
 https://en.wikipedia.org/wiki/Page_replacement_algorithm#Clock
 
 ## Installation via Leiningen / Clojars:

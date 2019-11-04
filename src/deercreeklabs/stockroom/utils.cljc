@@ -66,11 +66,12 @@
 
   (evict! [this k]
     (swap! *state (fn [state]
-                    (let [i (-> state :key->index (get k))]
+                    (if-let [i (-> state :key->index (get k))]
                       (-> state
                           (update :key->index dissoc k)
                           (assoc-in [:cache i 2] false)
-                          (assoc :clock-hand i)))))
+                          (assoc :clock-hand i))
+                      state)))
     nil)
 
   (flush! [this]

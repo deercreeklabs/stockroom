@@ -41,6 +41,25 @@
     (is (= #{5} (set (sr/keys stockroom))))
     (is (= 4 (sr/get stockroom 5)))))
 
+(deftest test-stockroom-string-key
+  (let [size 3
+        stockroom (sr/stockroom size)]
+    (is (zero?(count (sr/keys stockroom))))
+    (is (nil? (sr/get stockroom "a")))
+    (sr/put! stockroom "a" 1)
+    (is (= 1 (sr/get stockroom "a")))
+    (is (= 1 (count (sr/keys stockroom))))
+    (sr/evict! stockroom "a")
+    (is (= #{} (set (sr/keys stockroom))))
+    (is (nil? (sr/get stockroom "a")))))
+
+(deftest test-evict-non-existent-key
+  (let [size 3
+        stockroom (sr/stockroom size)]
+    (sr/evict! stockroom "a")
+    (is (= #{} (set (sr/keys stockroom))))
+    (is (nil? (sr/get stockroom "a")))))
+
 (deftest test-memoize-sr
   (let [f inc
         f* (sr/memoize-sr f 5)]

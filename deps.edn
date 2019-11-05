@@ -10,9 +10,9 @@
  {:dev {:extra-deps {org.clojure/tools.namespace {:mvn/version "0.2.11"}}
         :extra-paths ["dev"]}
   :test {:extra-paths ["test"]
-         :extra-deps {lambdaisland/kaocha {:mvn/version "0.0-529"}
-                      lambdaisland/kaocha-cljs {:mvn/version "0.0-40"}
-                      lambdaisland/kaocha-cloverage {:mvn/version "0.0-32"}}}
+         :extra-deps {lambdaisland/kaocha {:mvn/version "0.0-554"}
+                      lambdaisland/kaocha-cljs {:mvn/version "0.0-59"}
+                      lambdaisland/kaocha-cloverage {:mvn/version "0.0-41"}}}
   :pack {:extra-deps {pack/pack.alpha
                       {:git/url "https://github.com/juxt/pack.alpha.git"
                        :sha "2769a6224bfb938e777906ea311b3daf7d2220f5"}}

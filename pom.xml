@@ -4,7 +4,7 @@
   <groupId>deercreeklabs</groupId>
   <artifactId>stockroom</artifactId>
   <packaging>jar</packaging>
-  <version>0.3.3</version>
+  <version>0.3.4</version>
   <name>stockroom</name>
   <description>Clojure/Clojurescript cache, using the Clock algorithm.</description>
   <url>http://www.deercreeklabs.com</url>

@@ -7,13 +7,15 @@
              "clojars" {:url "https://repo.clojars.org/"}}
 
  :aliases
- {:dev {:extra-deps {org.clojure/tools.namespace {:mvn/version "0.2.11"}}
-        :extra-paths ["dev"]}
-  :test {:extra-paths ["test"]
-         :extra-deps {lambdaisland/kaocha {:mvn/version "0.0-554"}
-                      lambdaisland/kaocha-cljs {:mvn/version "0.0-59"}
-                      lambdaisland/kaocha-cloverage {:mvn/version "0.0-41"}}}
+ {:dev {:extra-paths ["dev"]
+        :extra-deps {org.clojure/tools.namespace {:mvn/version "0.3.1"}}}
+
   :pack {:extra-deps {pack/pack.alpha
                       {:git/url "https://github.com/juxt/pack.alpha.git"
-                       :sha "2769a6224bfb938e777906ea311b3daf7d2220f5"}}
-         :main-opts ["-m"]}}}
+                       :sha "c70740ffc10805f34836da2160fa1899601fac02"}}
+         :main-opts ["-m"]}
+
+  :test {:extra-paths ["test"]
+         :extra-deps {lambdaisland/kaocha {:mvn/version "0.0-573"}
+                      lambdaisland/kaocha-cljs {:mvn/version "0.0-68"}
+                      lambdaisland/kaocha-cloverage {:mvn/version "0.0-41"}}}}}

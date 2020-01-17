@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+rm -fr .cpcache node_modules target out
+npm install

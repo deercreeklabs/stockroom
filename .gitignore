@@ -13,6 +13,7 @@ pom.xml.asc
 # JS stuff
 /node_modules
 package-lock.json
+/out
 
 # Emacs stuff
 *~

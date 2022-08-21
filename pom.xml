@@ -4,7 +4,7 @@
   <groupId>deercreeklabs</groupId>
   <artifactId>stockroom</artifactId>
   <packaging>jar</packaging>
-  <version>0.3.6</version>
+  <version>0.3.7</version>
   <name>stockroom</name>
   <description>Clojure/Clojurescript cache, using the Clock algorithm.</description>
   <url>http://www.deercreeklabs.com</url>
@@ -50,12 +50,12 @@
     <dependency>
       <groupId>org.clojure</groupId>
       <artifactId>clojure</artifactId>
-      <version>1.10.2</version>
+      <version>1.11.1</version>
     </dependency>
     <dependency>
       <groupId>prismatic</groupId>
       <artifactId>schema</artifactId>
-      <version>1.1.12</version>
+      <version>1.2.1</version>
     </dependency>
   </dependencies>
 </project>

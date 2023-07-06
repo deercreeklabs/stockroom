@@ -1,6 +1,4 @@
-(ns deercreeklabs.stockroom.utils
-  (:require
-   [schema.core :as s]))
+(ns deercreeklabs.stockroom.utils)
 
 (defprotocol IStockroom
   (get* [this k])

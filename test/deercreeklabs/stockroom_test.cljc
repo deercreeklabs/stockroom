@@ -1,13 +1,7 @@
 (ns deercreeklabs.stockroom-test
   (:require
    [clojure.test :refer [deftest is]]
-   [deercreeklabs.stockroom :as sr]
-   [schema.core :as s]))
-
-;; Use this instead of fixtures, which are hard to make work w/ async testing.
-(s/set-fn-validation! false)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Unit tests
+   [deercreeklabs.stockroom :as sr]))
 
 (deftest test-stockroom
   (let [size 3
